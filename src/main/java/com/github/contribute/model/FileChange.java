@@ -4,17 +4,25 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "contributors")
+@Table(name = "file_changes")
 @Data
 public class FileChange {
 
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Id
-    private Long id;
+    Long id;
 
-    private String username;
+    String filename;
 
-    private Integer contributions;
+    Integer additions;
 
-    String avatarUrl;
+    Integer deletions;
+
+    Integer changes;
+
+    String status;
+
+    @ManyToOne
+    @JoinColumn(name = "commit_id")
+    private Commit commit;
 }
