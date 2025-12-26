@@ -1,6 +1,7 @@
 package com.github.contribute.service;
 
 import com.github.contribute.model.Commit;
+import com.github.contribute.model.Contributor;
 import com.github.contribute.repository.CommitRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class CommitSerivce {
         return commitRepository.save(commit);
     }
 
-    public List<Commit> getCommitsByContributor(Commit commit){
+    public List<Commit> getCommitsByContributor(Long contributorId){
         return commitRepository.findByContributorId(contributorId);
     }
 }
