@@ -1,6 +1,8 @@
 package com.github.contribute.service;
 
+import com.github.contribute.dto.GithubContributorDto;
 import com.github.contribute.model.Commit;
+import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,7 +29,10 @@ public class GithubService {
         fetchCommits(owner, repo);
     }
 
-    private void fetchContributors(String owner, String repo) {
+    public GithubContributorDto[] fetchContributors(String owner, String repo) {
+
+        String url = GITHUB_API_BASE + owner + "/" + repo + "/contributors";
+        return restTemplate.getForObject(url, GithubContributorDto[].class);
 
     }
 
