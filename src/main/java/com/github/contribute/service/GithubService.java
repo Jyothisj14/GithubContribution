@@ -31,7 +31,8 @@ public class GithubService {
 
     public GithubContributorDto[] fetchContributors(String owner, String repo) {
 
-        String url = GITHUB_API_BASE + owner + "/" + repo + "/contributors";
+        String url = GITHUB_API_BASE + "/repos/" + owner + "/" + repo + "/contributors";
+
         return restTemplate.getForObject(url, GithubContributorDto[].class);
 
     }

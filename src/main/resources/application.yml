@@ -1,18 +1,21 @@
 spring:
   application:
-    name:
-        contribute-app
+    name: contribute-app
+
   datasource:
     url: jdbc:mysql://localhost:3306/contribute_db
     username: jyothi
     password: jyothi
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
       hibernate:
-        ddl-auto: update
-      show-sql: true
-      properties:
-        hibernate.format_sql: true
+        format_sql: true
 
-  server:
-      port: 8080
+server:
+  port: 8080

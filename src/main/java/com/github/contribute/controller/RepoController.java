@@ -9,7 +9,6 @@ import com.github.contribute.service.FileChangeService;
 import com.github.contribute.service.GithubService;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.File;
 import java.util.List;
 
 @RestController
@@ -18,14 +17,14 @@ public class RepoController {
 
     private final GithubService githubService;
     private final ContributorService contributorService;
-    private final CommitSerivce  commitSerivce;
+    private final CommitSerivce  commitService;
     private final FileChangeService  fileChangeService;
 
 
-    public RepoController(GithubService githubService, ContributorService contributorService, CommitSerivce commitSerivce, FileChangeService fileChangeService) {
+    public RepoController(GithubService githubService, ContributorService contributorService, CommitSerivce commitService, FileChangeService fileChangeService) {
         this.githubService = githubService;
         this.contributorService = contributorService;
-        this.commitSerivce = commitSerivce;
+        this.commitService = commitService;
         this.fileChangeService = fileChangeService;
     }
 
@@ -42,7 +41,7 @@ public class RepoController {
 
     @GetMapping("/contributors/{contributorId}/commits")
     public List<Commit> getCommitsByContributor(@PathVariable Long contributorId) {
-        return commitSerivce.getCommitsByContributor(contributorId);
+        return commitService.getCommitsByContributor(contributorId);
     }
 
     @GetMapping("/commits/{commitId}/files")
